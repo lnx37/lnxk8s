@@ -1,0 +1,13 @@
+KUBERNETES RUNTIME, 202405
+
+kuberlet -> dockershim --> docker -> containerd -> runc -> container
+kuberlet -> cri-dockerd -> docker -> containerd -> runc -> container
+kuberlet -> cri-containerd --------> containerd -> runc -> container
+kuberlet -> -----------------------> containerd -> runc -> container
+kuberlet -> cri-o -------------------------------> runc -> container
+
+kuberlet -> (cri) -> dockershim --> docker -> containerd -> (containerd-shim) -> (oci) -> runc -> (libcontainer)-> container
+kuberlet -> (cri) -> cri-dockerd -> docker -> containerd -> (containerd-shim) -> (oci) -> runc -> (libcontainer)-> container
+kuberlet -> (cri) -> cri-containerd --------> containerd -> (containerd-shim) -> (oci) -> runc -> (libcontainer)-> container
+kuberlet -> (cri) -> (cri-plugin) ----------> containerd -> (containerd-shim) -> (oci) -> runc -> (libcontainer)-> container
+kuberlet -> (cri) -> cri-o ----------------------------------------------------> (oci) -> runc -> (libcontainer)-> container

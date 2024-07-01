@@ -1,0 +1,5 @@
+ps -ef |grep "kube-scheduler "
+ps -ef |grep "kube-scheduler " |grep -v "grep" |awk '{ for(i=8; i<=NF; ++i) print $i }'
+
+kube-scheduler
+`-- /etc/kubernetes/scheduler.conf (kubeconfig)

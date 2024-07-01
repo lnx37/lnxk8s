@@ -1,0 +1,6 @@
+/usr/bin/kubelet
+--bootstrap-kubeconfig=/etc/kubernetes/bootstrap-kubelet.conf
+--kubeconfig=/etc/kubernetes/kubelet.conf
+--config=/var/lib/kubelet/config.yaml
+--container-runtime-endpoint=unix:///var/run/containerd/containerd.sock
+--pod-infra-container-image=registry.aliyuncs.com/google_containers/pause:3.9

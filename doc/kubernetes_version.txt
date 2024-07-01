@@ -1,0 +1,25 @@
+KUBERNETES VERSION, 202405
+
+eks, amazon,    aws,           elastic kubernetes service
+aks, microsoft, azure,         azure kubernetes service
+gke, google,    google cloud,  google kubernetes engine
+
+ack, alibaba,   alibaba cloud, container service for kubernetes
+tke, tencent,   tencent cloud, tencent kubernetes engine
+cce, huawei,    huawei cloud,  cloud container engine
+
+eks,       1.23, 1.24, 1.25, 1.26, 1.27, 1.28, 1.29, 1.30
+aks,                         1.26, 1.27, 1.28, 1.29, 1.30
+gke,                   1.25, 1.26, 1.27, 1.28, 1.29, 1.30
+
+ack,             1.24,       1.26,       1.28
+tke, 1.22,       1.24,       1.26
+cce,       1.23,       1.25,       1.27, 1.28, 1.29
+
+https://docs.aws.amazon.com/eks/latest/userguide/kubernetes-versions.html
+https://learn.microsoft.com/en-us/azure/aks/supported-kubernetes-versions
+https://cloud.google.com/kubernetes-engine/docs/release-schedule
+
+https://help.aliyun.com/zh/ack/ack-managed-and-ack-dedicated/user-guide/support-for-kubernetes-versions
+https://cloud.tencent.com/document/product/457/73078
+https://support.huaweicloud.com/bulletin-cce/cce_whsnew_0005.html

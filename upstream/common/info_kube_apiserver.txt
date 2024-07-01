@@ -1,0 +1,17 @@
+ps -ef |grep "kube-apiserver "
+ps -ef |grep "kube-apiserver " |grep -v "grep" |awk '{ for(i=8; i<=NF; ++i) print $i }'
+
+kube-apiserver
+|-- /etc/kubernetes/pki/apiserver-etcd-client.crt
+|-- /etc/kubernetes/pki/apiserver-etcd-client.key
+|-- /etc/kubernetes/pki/apiserver-kubelet-client.crt
+|-- /etc/kubernetes/pki/apiserver-kubelet-client.key
+|-- /etc/kubernetes/pki/apiserver.crt
+|-- /etc/kubernetes/pki/apiserver.key
+|-- /etc/kubernetes/pki/ca.crt
+|-- /etc/kubernetes/pki/etcd/ca.crt
+|-- /etc/kubernetes/pki/front-proxy-ca.crt
+|-- /etc/kubernetes/pki/front-proxy-client.crt
+|-- /etc/kubernetes/pki/front-proxy-client.key
+|-- /etc/kubernetes/pki/sa.key
+`-- /etc/kubernetes/pki/sa.pub

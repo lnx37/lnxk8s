@@ -1,0 +1,11 @@
+# https://artifacthub.io/packages/helm/traefik/traefik/?modal=values
+
+# hostNetwork: false
+
+ports:
+  traefik:
+    hostPort: 9000
+  web:
+    hostPort: 80
+  websecure:
+    hostPort: 443

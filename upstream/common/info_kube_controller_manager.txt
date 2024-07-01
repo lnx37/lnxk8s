@@ -1,0 +1,9 @@
+ps -ef |grep "kube-controller-manager "
+ps -ef |grep "kube-controller-manager " |grep -v "grep" |awk '{ for(i=8; i<=NF; ++i) print $i }'
+
+kube-controller-manager
+|-- /etc/kubernetes/controller-manager.conf (kubeconfig)
+|-- /etc/kubernetes/pki/ca.crt
+|-- /etc/kubernetes/pki/ca.key
+|-- /etc/kubernetes/pki/front-proxy-ca.crt
+`-- /etc/kubernetes/pki/sa.key

@@ -1,0 +1,23 @@
+ps -ef |grep "kubelet "
+ps -ef |grep "kubelet " |grep -v "grep" |awk '{ for(i=8; i<=NF; ++i) print $i }'
+
+systemctl status kubelet -l
+
+/usr/bin/kubelet
+|-- /etc/kubernetes/bootstrap-kubelet.conf
+|-- /etc/kubernetes/kubelet.conf
+|   `-- /var/lib/kubelet/pki/kubelet-client-current.pem
+`-- /var/lib/kubelet/config.yaml
+    `--/etc/kubernetes/pki/ca.crt
+
+/usr/lib/systemd/system/kubelet.service
+/usr/lib/systemd/system/kubelet.service.d/10-kubeadm.conf
+`-- /usr/bin/kubelet
+    |-- /etc/kubernetes/bootstrap-kubelet.conf (doesn't exist)
+    |-- /etc/kubernetes/kubelet.conf (kubeconfig, auto-generated)
+    |   `-- /var/lib/kubelet/pki/kubelet-client-current.pem
+    |-- /var/lib/kubelet/config.yaml (yaml)
+    |   `-- /etc/kubernetes/pki/ca.crt
+    |-- /var/lib/kubelet/kubeadm-flags.env
+    |-- /etc/sysconfig/kubelet (empty)
+    `-- /usr/bin/kubelet

@@ -1,0 +1,6 @@
+KUBERNETES TRAFFIC, 202406
+
+traffic -> lb ----------> ingress -> service (clusterip) ----> pod
+traffic -> lb ---------> nodeport -> service (nodeport) -----> pod
+traffic -> lb -> nginx-> nodeport -> service (nodeport) -----> pod
+traffic -> lb ---------------------> service (loadbalancer) -> pod

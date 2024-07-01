@@ -1,0 +1,78 @@
+USAGE, 202405, 202406
+
+bash bootstrap.sh
+
+env.sh, kubernetes + containerd + calico + ipvs
+-----------------------------------------------
+#!/bin/bash
+MASTER_IP_LIST=("172.22.23.70")
+WORKER_IP_LIST=("${MASTER_IP_LIST[0]}")
+ETCD_IP_LIST=("${MASTER_IP_LIST[0]}")
+KUBE_APISERVER_IP="${MASTER_IP_LIST[0]}"
+KUBERNETES_VERSION="v1.28.10"
+CONTAINER_RUNTIME="containerd"
+NETWORK_PLUGIN="calico"
+KUBE_PROXY_MODE="ipvs"
+OS_ARCH="amd64"
+DOWNLOAD_ONLY="no"
+-----------------------------------------------
+
+env.sh, kubernetes + containerd + calico + ipvs (ha)
+----------------------------------------------------
+#!/bin/bash
+MASTER_IP_LIST=("172.22.26.65" "172.22.26.66" "172.22.26.67")
+WORKER_IP_LIST=("172.22.26.68" "172.22.26.69" "172.22.26.70")
+ETCD_IP_LIST=("172.22.26.71" "172.22.26.72" "172.22.26.73")
+KUBE_APISERVER_IP="172.22.26.64"
+KUBERNETES_VERSION="v1.28.10"
+CONTAINER_RUNTIME="containerd"
+NETWORK_PLUGIN="calico"
+KUBE_PROXY_MODE="ipvs"
+OS_ARCH="amd64"
+DOWNLOAD_ONLY="no"
+----------------------------------------------------
+
+env.sh, kubernetes + containerd + calico + ipvs (arm64)
+-------------------------------------------------------
+#!/bin/bash
+MASTER_IP_LIST=("172.22.23.70")
+WORKER_IP_LIST=("${MASTER_IP_LIST[0]}")
+ETCD_IP_LIST=("${MASTER_IP_LIST[0]}")
+KUBE_APISERVER_IP="${MASTER_IP_LIST[0]}"
+KUBERNETES_VERSION="v1.28.10"
+CONTAINER_RUNTIME="containerd"
+NETWORK_PLUGIN="calico"
+KUBE_PROXY_MODE="ipvs"
+OS_ARCH="arm64"
+DOWNLOAD_ONLY="no"
+-------------------------------------------------------
+
+env.sh, kubernetes + cri-dockerd + docker + flannel + iptables
+--------------------------------------------------------------
+#!/bin/bash
+MASTER_IP_LIST=("172.22.23.70")
+WORKER_IP_LIST=("${MASTER_IP_LIST[0]}")
+ETCD_IP_LIST=("${MASTER_IP_LIST[0]}")
+KUBE_APISERVER_IP="${MASTER_IP_LIST[0]}"
+KUBERNETES_VERSION="v1.28.10"
+CONTAINER_RUNTIME="docker"
+NETWORK_PLUGIN="flannel"
+KUBE_PROXY_MODE="iptables"
+OS_ARCH="amd64"
+DOWNLOAD_ONLY="no"
+--------------------------------------------------------------
+
+env.sh, kubernetes + cri-dockerd + docker + flannel + iptables (arm64)
+----------------------------------------------------------------------
+#!/bin/bash
+MASTER_IP_LIST=("172.22.23.70")
+WORKER_IP_LIST=("${MASTER_IP_LIST[0]}")
+ETCD_IP_LIST=("${MASTER_IP_LIST[0]}")
+KUBE_APISERVER_IP="${MASTER_IP_LIST[0]}"
+KUBERNETES_VERSION="v1.28.10"
+CONTAINER_RUNTIME="docker"
+NETWORK_PLUGIN="flannel"
+KUBE_PROXY_MODE="iptables"
+OS_ARCH="arm64"
+DOWNLOAD_ONLY="no"
+----------------------------------------------------------------------

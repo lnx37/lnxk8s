@@ -1,0 +1,5 @@
+KUBERNETES METRICS SERVER, 202406
+
+kubectl top -> kuber-apiserver -> (metrics api: https://{ip}:10250/apis/metrics.k8s.io/v1beta1) -> metrics-server -> kubelet -> cadvisor -> pod -> container
+dashboard ---> kuber-apiserver -> (metrics api: https://{ip}:10250/apis/metrics.k8s.io/v1beta1) -> metrics-server -> kubelet -> cadvisor -> pod -> container
+hpa/vpa -----> kuber-apiserver -> (metrics api: https://{ip}:10250/apis/metrics.k8s.io/v1beta1) -> metrics-server -> kubelet -> cadvisor -> pod -> container

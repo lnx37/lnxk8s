@@ -1,0 +1,69 @@
+REFER, 202407
+
+
+
+-- kubernetes
+https://github.com/kubernetes/kubernetes
+https://github.com/kubernetes/kubernetes/tree/master/cluster
+https://github.com/kubernetes/kubernetes/blob/master/cmd/kubeadm/app/constants/constants.go
+https://github.com/kubernetes/kubernetes/blob/master/cmd/kubeadm/app/preflight/checks.go
+
+
+
+-- kubernetes kubeadm
+https://kubernetes.io/docs/reference/setup-tools/kubeadm/
+https://kubernetes.io/docs/reference/setup-tools/kubeadm/implementation-details/
+https://kubernetes.io/docs/reference/setup-tools/kubeadm/kubeadm-init/
+
+https://github.com/kubernetes/kubeadm
+https://github.com/kubernetes/kubeadm/blob/main/docs/design/design_v1.10.md
+https://github.com/kubernetes/design-proposals-archive/blob/main/cluster-lifecycle/bootstrap-discovery.md
+
+
+
+-- kubernetes bootstrap
+https://kubernetes.io/docs/reference/access-authn-authz/bootstrap-tokens/
+https://kubernetes.io/docs/reference/access-authn-authz/bootstrap-tokens/#token-format
+
+https://kubernetes.io/docs/reference/access-authn-authz/kubelet-tls-bootstrapping/
+https://kubernetes.io/docs/reference/access-authn-authz/kubelet-tls-bootstrapping/#kubelet-configuration
+
+
+
+-- kubernetes api
+https://kubernetes.io/docs/reference/command-line-tools-reference/kube-apiserver/
+https://kubernetes.io/docs/reference/command-line-tools-reference/kube-controller-manager/
+https://kubernetes.io/docs/reference/command-line-tools-reference/kube-proxy/
+https://kubernetes.io/docs/reference/command-line-tools-reference/kube-scheduler/
+https://kubernetes.io/docs/reference/command-line-tools-reference/kubelet/
+
+https://kubernetes.io/docs/reference/config-api/kube-proxy-config.v1alpha1/
+https://kubernetes.io/docs/reference/config-api/kube-proxy-config.v1alpha1/#kubeproxy-config-k8s-io-v1alpha1-ProxyMode
+https://kubernetes.io/docs/reference/config-api/kubelet-config.v1beta1/
+
+
+
+-- kubernetes admission controller
+https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/
+https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/#which-plugins-are-enabled-by-default
+
+
+
+-- kubernetes addon
+https://kubernetes.io/docs/concepts/cluster-administration/addons/
+
+
+
+-- kubernetes thehardway
+https://github.com/kelseyhightower/kubernetes-the-hard-way
+https://github.com/kelseyhightower/kubernetes-the-hard-way/blob/master/docs/04-certificate-authority.md
+https://github.com/kelseyhightower/kubernetes-the-hard-way/blob/master/docs/05-kubernetes-configuration-files.md
+
+
+
+-- misc
+https://kubernetes.io/docs/reference/access-authn-authz/rbac/
+https://kubernetes.io/docs/reference/kubectl/generated/kubectl_config/
+https://kubernetes.io/docs/setup/best-practices/certificates/
+https://kubernetes.io/docs/tasks/administer-cluster/certificates/
+https://kubernetes.io/docs/tasks/extend-kubernetes/configure-aggregation-layer/

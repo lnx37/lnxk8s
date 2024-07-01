@@ -1,0 +1,31 @@
+apiVersion: v1
+data:
+  ClusterConfiguration: |
+    apiServer:
+      extraArgs:
+        authorization-mode: Node,RBAC
+      timeoutForControlPlane: 4m0s
+    apiVersion: kubeadm.k8s.io/v1beta3
+    certificatesDir: /etc/kubernetes/pki
+    clusterName: kubernetes
+    controlPlaneEndpoint: 172.22.23.70:6443
+    controllerManager: {}
+    dns: {}
+    etcd:
+      local:
+        dataDir: /var/lib/etcd
+    imageRepository: registry.aliyuncs.com/google_containers
+    kind: ClusterConfiguration
+    kubernetesVersion: v1.28.10
+    networking:
+      dnsDomain: cluster.local
+      podSubnet: 10.244.0.0/16
+      serviceSubnet: 10.96.0.0/12
+    scheduler: {}
+kind: ConfigMap
+metadata:
+  creationTimestamp: "2024-06-23T13:36:50Z"
+  name: kubeadm-config
+  namespace: kube-system
+  resourceVersion: "196"
+  uid: f27d5e03-6b36-4969-8e3c-92ba1d20fbbc

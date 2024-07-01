@@ -1,0 +1,7 @@
+/etc/kubernetes/
+|-- kubelet.conf
+|-- manifests
+`-- pki
+    `-- ca.crt
+
+2 directories, 2 files

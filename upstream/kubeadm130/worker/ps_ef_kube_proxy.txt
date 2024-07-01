@@ -1,0 +1,3 @@
+/usr/local/bin/kube-proxy
+--config=/var/lib/kube-proxy/config.conf
+--hostname-override=izwz91a52phg2e1ybp8t4hz

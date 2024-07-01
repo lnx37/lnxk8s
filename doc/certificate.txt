@@ -1,0 +1,143 @@
+CERTIFICATE, 202405
+
+// kubeadm
+tree /etc/kubernetes/ --charset=ascii
+-------------------------------------
+/etc/kubernetes/
+|-- admin.conf
+|-- controller-manager.conf
+|-- kubelet.conf
+|-- manifests
+|   |-- etcd.yaml
+|   |-- kube-apiserver.yaml
+|   |-- kube-controller-manager.yaml
+|   `-- kube-scheduler.yaml
+|-- pki
+|   |-- apiserver.crt
+|   |-- apiserver-etcd-client.crt
+|   |-- apiserver-etcd-client.key
+|   |-- apiserver.key
+|   |-- apiserver-kubelet-client.crt
+|   |-- apiserver-kubelet-client.key
+|   |-- ca.crt
+|   |-- ca.key
+|   |-- etcd
+|   |   |-- ca.crt
+|   |   |-- ca.key
+|   |   |-- healthcheck-client.crt
+|   |   |-- healthcheck-client.key
+|   |   |-- peer.crt
+|   |   |-- peer.key
+|   |   |-- server.crt
+|   |   `-- server.key
+|   |-- front-proxy-ca.crt
+|   |-- front-proxy-ca.key
+|   |-- front-proxy-client.crt
+|   |-- front-proxy-client.key
+|   |-- sa.key
+|   `-- sa.pub
+`-- scheduler.conf
+-------------------------------------
+
+// etcd
+// make_etcd.sh
++----------------------------------+---------------------------------+--------------------------------------------+
+| input                            | output                          | kubeadm                                    |
++----------------------------------+---------------------------------+--------------------------------------------+
+| ca-csr.json                      | ca-key.pem                      | /etc/kubernetes/pki/etcd/ca.key            |
+|                                  | ca.csr                          |                                            |
+|                                  | ca.pem                          | /etc/kubernetes/pki/etcd/ca.crt            |
++----------------------------------+---------------------------------+--------------------------------------------+
+| ca.pem                           |                                 |                                            |
+| ca-key.pem                       |                                 |                                            |
+| ca-config.json                   |                                 |                                            |
+| server-csr.json                  | server-key.pem                  | /etc/kubernetes/pki/etcd/server.key        |
+|                                  | server.csr                      |                                            |
+|                                  | server.pem                      | /etc/kubernetes/pki/etcd/server.crt        |
++----------------------------------+---------------------------------+--------------------------------------------+
+
+// kubernetes
+// make_kubernetes_common.sh
++----------------------------------+---------------------------------+--------------------------------------------+
+| input                            | output                          | kubeadm                                    |
++----------------------------------+---------------------------------+--------------------------------------------+
+| ca-csr.json                      | ca-key.pem                      | /etc/kubernetes/pki/ca.key                 |
+|                                  | ca.csr                          |                                            |
+|                                  | ca.pem                          | /etc/kubernetes/pki/ca.crt                 |
++----------------------------------+---------------------------------+--------------------------------------------+
+| front-proxy-ca-csr.json          | front-proxy-ca-key.pem          | /etc/kubernetes/pki/front-proxy-ca.key     |
+|                                  | front-proxy-ca.csr              |                                            |
+|                                  | front-proxy-ca.pem              | /etc/kubernetes/pki/front-proxy-ca.crt     |
++----------------------------------+---------------------------------+--------------------------------------------+
+| front-proxy-ca.pem               |                                 |                                            |
+| front-proxy-ca-key.pem           |                                 |                                            |
+| front-proxy-ca-config.json       |                                 |                                            |
+| front-proxy-client-csr.json      | front-proxy-client-key.pem      | /etc/kubernetes/pki/front-proxy-client.key |
+|                                  | front-proxy-client.csr          |                                            |
+|                                  | front-proxy-client.pem          | /etc/kubernetes/pki/front-proxy-client.crt |
++----------------------------------+---------------------------------+--------------------------------------------+
+
+// kube-apiserver
+// make_kubernetes_kube_apiserver.sh
++----------------------------------+---------------------------------+--------------------------------------------+
+| input                            | output                          | kubeadm                                    |
++----------------------------------+---------------------------------+--------------------------------------------+
+| ../ca.pem                        |                                 |                                            |
+| ../ca-key.pem                    |                                 |                                            |
+| ../ca-config.json                |                                 |                                            |
+| kube-apiserver.csr.json          | kube-apiserver-key.pem          | /etc/kubernetes/pki/apiserver.key          |
+|                                  | kube-apiserver.csr              |                                            |
+|                                  | kube-apiserver.pem              | /etc/kubernetes/pki/apiserver.crt          |
++----------------------------------+---------------------------------+--------------------------------------------+
+
+// kube-controller-manager
+// make_kubernetes_kube_controller_manager.sh
++----------------------------------+---------------------------------+--------------------------------------------+
+| input                            | output                          | kubeadm                                    |
++----------------------------------+---------------------------------+--------------------------------------------+
+| ../ca.pem                        |                                 |                                            |
+| ../ca-key.pem                    |                                 |                                            |
+| ../ca-config.json                |                                 |                                            |
+| kube-controller-manager-csr.json | kube-controller-manager-key.pem | /etc/kubernetes/controller-manager.conf    |
+|                                  | kube-controller-manager.csr     |                                            |
+|                                  | kube-controller-manager.pem     | /etc/kubernetes/controller-manager.conf    |
++----------------------------------+---------------------------------+--------------------------------------------+
+
+// kube-scheduler
+// make_kubernetes_kube_scheduler.sh
++----------------------------------+---------------------------------+--------------------------------------------+
+| input                            | output                          | kubeadm                                    |
++----------------------------------+---------------------------------+--------------------------------------------+
+| ../ca.pem                        |                                 |                                            |
+| ../ca-key.pem                    |                                 |                                            |
+| ../ca-config.json                |                                 |                                            |
+| kube-scheduler-csr.json          | kube-scheduler-key.pem          | /etc/kubernetes/scheduler.conf             |
+|                                  | kube-scheduler.csr              |                                            |
+|                                  | kube-scheduler.pem              | /etc/kubernetes/scheduler.conf             |
++----------------------------------+---------------------------------+--------------------------------------------+
+
+// kube-proxy
+// make_kubernetes_kube_proxy.sh
++----------------------------------+---------------------------------+--------------------------------------------+
+| input                            | output                          | kubeadm                                    |
++----------------------------------+---------------------------------+--------------------------------------------+
+| ../ca.pem                        |                                 |                                            |
+| ../ca-key.pem                    |                                 |                                            |
+| ../ca-config.json                |                                 |                                            |
+| kube-proxy-csr.json              | kube-proxy-key.pem              | /var/lib/kube-proxy/kubeconfig.conf        |
+|                                  | kube-proxy.csr                  |                                            |
+|                                  | kube-proxy.pem                  | /var/lib/kube-proxy/kubeconfig.conf        |
++----------------------------------+---------------------------------+--------------------------------------------+
+
+// kubectl
+// make_kubernetes_kubectl.sh
++----------------------------------+---------------------------------+--------------------------------------------+
+| input                            | output                          | kubeadm                                    |
++----------------------------------+---------------------------------+--------------------------------------------+
+| ../ca.pem                        |                                 |                                            |
+| ../ca-key.pem                    |                                 |                                            |
+| ../ca-config.json                |                                 |                                            |
+| kubectl-csr.json                 | kubectl-key.pem                 | /etc/kubernetes/admin.conf                 |
+|                                  | kubectl.csr                     |                                            |
+|                                  | kubectl.pem                     | /etc/kubernetes/admin.conf                 |
++----------------------------------+---------------------------------+--------------------------------------------+

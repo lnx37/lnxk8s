@@ -1,0 +1,47 @@
+# -- changelog
+# modify, apiVersion: rbac.authorization.k8s.io/v1beta1
+#
+# -- refer
+# https://github.com/kelseyhightower/kubernetes-the-hard-way/blob/master/configs/kube-apiserver-to-kubelet.yaml
+# https://stackoverflow.com/questions/70483191/kubernetes-kube-apiserver-to-kubelet-permissions
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  annotations:
+    rbac.authorization.kubernetes.io/autoupdate: "true"
+  labels:
+    kubernetes.io/bootstrapping: rbac-defaults
+  name: system:kube-apiserver-to-kubelet
+rules:
+  - apiGroups:
+      - ""
+    resources:
+      - nodes/proxy
+      - nodes/stats
+      - nodes/log
+      - nodes/spec
+      - nodes/metrics
+    verbs:
+      - "*"
+
+---
+
+# -- changelog
+# modify, apiVersion: rbac.authorization.k8s.io/v1beta1
+#
+# -- refer
+# https://github.com/kelseyhightower/kubernetes-the-hard-way/blob/master/configs/kube-apiserver-to-kubelet.yaml
+# https://stackoverflow.com/questions/70483191/kubernetes-kube-apiserver-to-kubelet-permissions
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: system:kube-apiserver
+  namespace: ""
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: system:kube-apiserver-to-kubelet
+subjects:
+  - apiGroup: rbac.authorization.k8s.io
+    kind: User
+    name: kube-apiserver

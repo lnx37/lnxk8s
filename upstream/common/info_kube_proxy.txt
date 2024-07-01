@@ -1,0 +1,15 @@
+ps -ef |grep "kube-proxy "
+ps -ef |grep "kube-proxy " |grep -v "grep" |awk '{ for(i=8; i<=NF; ++i) print $i }'
+
+locate kube-proxy
+
+kubectl exec -it kube-proxy-7zvct -n kube-system -- cat /var/lib/kube-proxy/config.conf
+kubectl exec -it kube-proxy-7zvct -n kube-system -- cat /var/lib/kube-proxy/kubeconfig.conf
+kubectl exec -it kube-proxy-7zvct -n kube-system -- cat /var/run/secrets/kubernetes.io/serviceaccount/ca.crt
+kubectl exec -it kube-proxy-7zvct -n kube-system -- cat /var/run/secrets/kubernetes.io/serviceaccount/token
+
+/usr/local/bin/kube-proxy
+`-- /var/lib/kube-proxy/config.conf (yaml)
+    `-- /var/lib/kube-proxy/kubeconfig.conf (kubeconfig)
+        |-- /var/run/secrets/kubernetes.io/serviceaccount/ca.crt
+        `-- /var/run/secrets/kubernetes.io/serviceaccount/token

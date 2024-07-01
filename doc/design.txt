@@ -1,0 +1,120 @@
+DESIGN, 202405, 202406
+
+history: init -> download ----------> make ----------> install -> setup ----------> uninstall
+history: init -> download ----------> make -> stage -> install -> setup ----------> uninstall
+history: init -> download ----------> make -> stage -> install -> setup -> taint -> uninstall
+current: init -> download -> unpkg -> make -> stage -> install -> setup -> taint -> uninstall
+
++-------------------------+----------------------+--------------------------------------------+---------------------------------------------+-----------------------------------------------+
+| download.sh             | unpkg.sh             | make.sh                                    | stage.sh                                    | install.sh                                    |
++-------------------------+----------------------+--------------------------------------------+---------------------------------------------+-----------------------------------------------+
+| download_cfssl.sh       | unpkg_cfssl.sh       |                                            |                                             |                                               |
+|                         |                      |                                            |                                             |                                               |
+| download_etcd.sh        | unpkg_etcd.sh        | make_etcd.sh                               | stage_etcd.sh                               | install_etcd.sh                               |
+|                         |                      |                                            |                                             |                                               |
+| download_cni_plugins.sh | unpkg_cni_plugins.sh |                                            | stage_cni_plugins.sh                        | install_cni_plugins.sh                        |
+|                         |                      |                                            |                                             |                                               |
+| download_containerd.sh  | unpkg_containerd.sh  | make_containerd.sh                         | stage_containerd.sh                         | install_containerd.sh                         |
+|                         |                      |                                            |                                             |                                               |
+| download_runc.sh        | unpkg_runc.sh        |                                            | stage_runc.sh                               | install_runc.sh                               |
+|                         |                      |                                            |                                             |                                               |
+| download_crictl.sh      | unpkg_crictl.sh      | make_crictl.sh                             | stage_crictl.sh                             | install_crictl.sh                             |
+|                         |                      |                                            |                                             |                                               |
+| download_docker.sh      | unpkg_docker.sh      | make_docker.sh                             | stage_docker.sh                             | install_docker.sh                             |
+|                         |                      |                                            |                                             |                                               |
+| download_cri_dockerd.sh | unpkg_cri_dockerd.sh | make_cri_dockerd.sh                        | stage_cri_dockerd.sh                        | install_cri_dockerd.sh                        |
+|                         |                      |                                            |                                             |                                               |
+| download_kubernetes.sh  | unpkg_kubernetes.sh  | make_kubernetes_common.sh                  | stage_kubernetes_common.sh                  | install_kubernetes_common.sh                  |
+|                         |                      | make_kubernetes_kubectl.sh                 | stage_kubernetes_kubectl.sh                 | install_kubernetes_kubectl.sh                 |
+|                         |                      | make_kubernetes_kube_apiserver.sh          | stage_kubernetes_kube_apiserver.sh          | install_kubernetes_kube_apiserver.sh          |
+|                         |                      | make_kubernetes_kube_controller_manager.sh | stage_kubernetes_kube_controller_manager.sh | install_kubernetes_kube_controller_manager.sh |
+|                         |                      | make_kubernetes_kube_scheduler.sh          | stage_kubernetes_kube_scheduler.sh          | install_kubernetes_kube_scheduler.sh          |
+|                         |                      | make_kubernetes_kubelet.sh                 | stage_kubernetes_kubelet.sh                 | install_kubernetes_kubelet.sh                 |
+|                         |                      | make_kubernetes_kube_proxy.sh              | stage_kubernetes_kube_proxy.sh              | install_kubernetes_kube_proxy.sh              |
++-------------------------+----------------------+--------------------------------------------+---------------------------------------------+-----------------------------------------------+
+
+bootstrap.sh
+|-- init.sh
+|   |-- init_ssh.sh
+|   `-- init_check.sh
+|-- download.sh
+|   |-- download_cfssl.sh
+|   |-- download_etcd.sh
+|   |-- download_cni_plugins.sh
+|   |-- download_containerd.sh
+|   |-- download_runc.sh
+|   |-- download_crictl.sh
+|   |-- download_docker.sh
+|   |-- download_cri_dockerd.sh
+|   `-- download_kubernetes.sh
+|-- unpkg.sh
+|   |-- unpkg_cfssl.sh
+|   |-- unpkg_etcd.sh
+|   |-- unpkg_cni_plugins.sh
+|   |-- unpkg_containerd.sh
+|   |-- unpkg_runc.sh
+|   |-- unpkg_crictl.sh
+|   |-- unpkg_docker.sh
+|   |-- unpkg_cri_dockerd.sh
+|   `-- unpkg_kubernetes.sh
+|-- make.sh
+|   |-- make_etcd.sh
+|   |-- make_containerd.sh
+|   |-- make_crictl.sh
+|   |-- make_docker.sh
+|   |-- make_cri_dockerd.sh
+|   |-- make_kubernetes_common.sh
+|   |-- make_kubernetes_kubectl.sh
+|   |-- make_kubernetes_kube_apiserver.sh
+|   |-- make_kubernetes_kube_controller_manager.sh
+|   |-- make_kubernetes_kube_scheduler.sh
+|   |-- make_kubernetes_kubelet.sh
+|   `-- make_kubernetes_kube_proxy.sh
+|-- stage.sh
+|   |-- stage_etcd.sh
+|   |-- stage_cni_plugins.sh
+|   |-- stage_containerd.sh
+|   |-- stage_runc.sh
+|   |-- stage_crictl.sh
+|   |-- stage_docker.sh
+|   |-- stage_cri_dockerd.sh
+|   |-- stage_kubectl.sh
+|   |-- stage_kubernetes_common.sh
+|   |-- stage_kubernetes_kubectl.sh
+|   |-- stage_kubernetes_kube_apiserver.sh
+|   |-- stage_kubernetes_kube_controller_manager.sh
+|   |-- stage_kubernetes_kube_scheduler.sh
+|   |-- stage_kubernetes_kubelet.sh
+|   `-- stage_kubernetes_kube_proxy.sh
+|-- install.sh
+|   |-- install_kubectl.sh
+|   |-- install_etcd.sh
+|   |-- install_kubernetes_master.sh
+|   |   |-- install_kubernetes_common.sh
+|   |   |-- install_kubernetes_kubectl.sh
+|   |   |-- install_kubernetes_kube_apiserver.sh
+|   |   |-- install_kubernetes_kube_controller_manager.sh
+|   |   `-- install_kubernetes_kube_scheduler.sh
+|   |-- install_kubernetes_worker.sh
+|   |   |-- install_cni_plugins.sh
+|   |   |-- install_containerd.sh
+|   |   |-- install_runc.sh
+|   |   |-- install_crictl.sh
+|   |   |-- install_docker.sh
+|   |   |-- install_cri_dockerd.sh
+|   |   |-- install_kubernetes_common.sh
+|   |   |-- install_kubernetes_kubelet.sh
+|   |   `-- install_kubernetes_kube_proxy.sh
+|   |-- addon/calico/install_calico.sh
+|   |-- addon/cilium/install_cilium.sh
+|   |-- addon/flannel/install_flannel.sh
+|   |-- addon/coredns/install_coredns.sh
+|   `-- addon/metrics_server/install_metrics_server.sh
+|-- setup.sh
+|-- taint.sh
+`-- uninstall.sh
+    |-- uninstall_common.sh
+    |-- uninstall_etcd.sh
+    |-- uninstall_kubernetes_master.sh
+    |-- uninstall_kubernetes_worker.sh
+    `-- uninstall_misc.sh

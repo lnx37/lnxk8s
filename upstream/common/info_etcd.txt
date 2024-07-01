@@ -1,0 +1,9 @@
+ps -ef |grep "etcd "
+ps -ef |grep "etcd " |grep -v "grep" |awk '{ for(i=8; i<=NF; ++i) print $i }'
+
+etcd
+|-- /etc/kubernetes/pki/etcd/ca.crt
+|-- /etc/kubernetes/pki/etcd/peer.crt
+|-- /etc/kubernetes/pki/etcd/peer.key
+|-- /etc/kubernetes/pki/etcd/server.crt
+`-- /etc/kubernetes/pki/etcd/server.key

@@ -1,0 +1,34 @@
+KUBERNETES KUBEADM VERSION, 202406
+
+kubeadm v1.28.10
+- kube-apiserver          v1.28.10
+- kube-controller-manager v1.28.10
+- kube-proxy              v1.28.10
+- kube-scheduler          v1.28.10
+- kubectl                 v1.28.10
+- kubelet                 v1.28.10
+- etcd                    3.5.12
+- coredns                 v1.10.1
+- pause                   3.6/3.9
+
+kubeadm v1.29.4
+- kube-apiserver          v1.29.4
+- kube-controller-manager v1.29.4
+- kube-proxy              v1.29.4
+- kube-scheduler          v1.29.4
+- kubectl                 v1.29.4
+- kubelet                 v1.29.4
+- etcd                    3.5.12
+- coredns                 v1.11.1
+- pause                   3.6/3.9
+
+kubeadm v1.30.1
+- kube-apiserver          v1.30.1
+- kube-controller-manager v1.30.1
+- kube-proxy              v1.30.1
+- kube-scheduler          v1.30.1
+- kubectl                 v1.30.1
+- kubelet                 v1.30.1
+- etcd                    3.5.12
+- coredns                 v1.11.1
+- pause                   3.6/3.9

@@ -1,0 +1,37 @@
+/etc/kubernetes/
+|-- admin.conf
+|-- controller-manager.conf
+|-- kubelet.conf
+|-- manifests
+|   |-- etcd.yaml
+|   |-- kube-apiserver.yaml
+|   |-- kube-controller-manager.yaml
+|   `-- kube-scheduler.yaml
+|-- pki
+|   |-- apiserver.crt
+|   |-- apiserver-etcd-client.crt
+|   |-- apiserver-etcd-client.key
+|   |-- apiserver.key
+|   |-- apiserver-kubelet-client.crt
+|   |-- apiserver-kubelet-client.key
+|   |-- ca.crt
+|   |-- ca.key
+|   |-- etcd
+|   |   |-- ca.crt
+|   |   |-- ca.key
+|   |   |-- healthcheck-client.crt
+|   |   |-- healthcheck-client.key
+|   |   |-- peer.crt
+|   |   |-- peer.key
+|   |   |-- server.crt
+|   |   `-- server.key
+|   |-- front-proxy-ca.crt
+|   |-- front-proxy-ca.key
+|   |-- front-proxy-client.crt
+|   |-- front-proxy-client.key
+|   |-- sa.key
+|   `-- sa.pub
+|-- scheduler.conf
+`-- super-admin.conf
+
+3 directories, 31 files

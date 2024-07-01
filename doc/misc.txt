@@ -1,0 +1,13 @@
+kubernetes
+- for 1.23, use docker (or change kubelet conf)
+- for 1.22, use docker (or change kubelet conf)
+- for 1.21, use docker (or change kubelet conf)
+- for 1.20, use docker + flannel (or change calico version)
+- for 1.19, use docker + flannel (or change calico version)
+- for 1.18, use docker + flannel (or change calico version)
+
+crio
+- crio not working well on centos7, unless using cgroupfs
+
+cniplugins
+- containerd and flannel depends on cniplugins
